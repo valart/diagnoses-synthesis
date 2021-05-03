@@ -30,15 +30,6 @@ def get_state(filename, stateName):
         return State(data['code'], data['age'], stateName, next, once, chronic)
 
 
-def scale_probabilities(array):
-    # for sex in utils.SEX:
-    #     for a in utils.AGES:
-    #         scaled = utils.scale_down([obj.age[a][sex] for obj in array])
-    #         for index, value in enumerate(scaled):
-    #             array[index].age[a][sex] = value
-    pass
-
-
 # Existing only 4 levels of ICD-10 codes
 # |-chapter
 #   |-subchapter
@@ -76,21 +67,16 @@ def get_model(path=""):
                     subsection = get_state(path + DATA_PATH + '/subsection/' + sectionFile[:-4] + '/' + subsectionFile, StateName.sub_section)
                     subsections.append(subsection)
 
-                scale_probabilities(subsections)
                 for subsection in subsections:
                     model.add_edge(section.code, subsection)
                     model.add_state(StateName.sub_section, subsection)
-            scale_probabilities(sections)
             for section in sections:
                 model.add_edge(subchapter.code, section)
                 model.add_state(StateName.section, section)
-
-        scale_probabilities(subchapters)
         for subchapter in subchapters:
             model.add_edge(chapter.code, subchapter)
             model.add_state(StateName.sub_chapter, subchapter)
 
-    scale_probabilities(model.states[StateName.chapter])
     return model
 
 
