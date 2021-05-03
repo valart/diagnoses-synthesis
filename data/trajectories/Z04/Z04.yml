@@ -1,0 +1,8 @@
+code: Z04
+transaction:
+  B20:
+    probability: 0.2
+    period: 3
+  B89:
+    probability: 0.8
+    period: 3

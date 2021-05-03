@@ -1,0 +1,5 @@
+code: I10
+transaction:
+  A09:
+    probability: 1
+    period: 2

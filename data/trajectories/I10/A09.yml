@@ -1,0 +1,5 @@
+code: A09
+transaction:
+  A46:
+    probability: 1
+    period: 5

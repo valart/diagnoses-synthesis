@@ -1,0 +1,5 @@
+code: B20
+transaction:
+  C20:
+    probability: 1
+    period: 3

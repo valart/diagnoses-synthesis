@@ -1,0 +1,8 @@
+code: B89
+transaction:
+  J00:
+    probability: 0.2
+    period: 5
+  N19:
+    probability: 0.8
+    period: 5

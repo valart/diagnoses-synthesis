@@ -1,0 +1,5 @@
+code: A46
+transaction:
+  I15:
+    probability: 1
+    period: 4
