@@ -91,6 +91,5 @@ def get_trajectories():
                 for code, value in data['transaction'].items():
                     end_edge = TrajectoryState(code, value['period'], value['probability'])
                     trajectory.add_edge(start_edge, end_edge)
-        # trajectories.append(trajectory)
         trajectories[directory] = trajectory
     return trajectories
