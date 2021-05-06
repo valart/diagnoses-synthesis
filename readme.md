@@ -46,7 +46,8 @@ Põhikäsud on `python main.py [-p populatsiooni arv] [-plot RHK-10 peatükki ko
 
 1. `python main.py -p 1000` genereerib 1000 isikut projekti sees olevasse ***output*** kausta
 
-2. `python main.py -plot chapter` genereerib graafiku, mille peal on näha kõikide daignooside peatükkide jaotust
+2. `python main.py -plot chapter` genereerib graafiku, mille peal on näha kõikide daignooside peatükkide jaotust. `python main.py -plot A00-B99` genereerib teatavaid nakkus- ja parasiithaigusi![Figure_1](https://user-images.githubusercontent.com/22376543/117357207-513df900-aebd-11eb-88eb-7bb40a6d38bd.png)
+
 
 3. `python main.py -model 5 F` genereerib *HTML* koodi, mille peal on näha kogu tõenäosusliku automaadi, mis vastab naissoole vanuses 5
 
