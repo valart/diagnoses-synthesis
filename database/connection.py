@@ -2,8 +2,10 @@ import sqlite3
 import csv
 from datetime import datetime
 import ast
+import sys
 
 DATA_FILE = 'db.sqlite'
+
 
 def get_icd10_to_omop(filename):
     code = dict()
@@ -24,6 +26,7 @@ def insert_conceptions(conn, filename):
                 "INSERT INTO CONCEPT(concept_id, concept_name, domain_id, vocabulary_id, concept_class_id, standard_concept, concept_code, valid_start_date, valid_end_date, invalid_reason) "
                 "VALUES(?,?,?,?,?,?,?,?,?,?)",
                 (i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]))
+
 
 def create_person(conn, person):
     conn.execute(
@@ -54,8 +57,11 @@ def create_observation(conn, observation):
         "INSERT INTO OBSERVATION(observation_id, person_id, observation_concept_id, observation_date, observation_type_concept_id, observation_source_concept_id, observation_source_value) "
         "VALUES(?,?,?,?,?,?,?);", observation)
 
-
-codes = get_icd10_to_omop('../data/ICD10/icd10_to_omop.tsv')  # Path to the file icd10_to_omop.tsv file
+try:
+    codes = get_icd10_to_omop('../data/ICD10/icd10_to_omop.tsv')  # Path to the file icd10_to_omop.tsv file
+except:
+    print("Andmebaasi lisamiseks vajalik fail 'icd10_to_omop.tsv' puudub. Võtke ühendust autoriga")
+    sys.exit(1)
 
 try:
     print("Trying to connect ...")
@@ -64,10 +70,10 @@ try:
 
     print("Connected")
 
-    person_id = 0  # int(connection.execute("SELECT MAX(person_id) FROM PERSON;").fetchone()[0])
-    condition_occurrence_id = 0  # int(connection.execute("SELECT MAX(condition_occurrence_id) FROM CONDITION_OCCURRENCE;").fetchone()[0])
-    observation_id = 0  # int(connection.execute("SELECT MAX(observation_id) FROM OBSERVATION;").fetchone()[0])
-    procedure_occurrence_id = 0  # int(connection.execute("SELECT MAX(procedure_occurrence_id) FROM PROCEDURE_OCCURRENCE;").fetchone()[0])
+    person_id = 0
+    condition_occurrence_id = 0
+    observation_id = 0
+    procedure_occurrence_id = 0
     observation_period_id = 0
 
     connection.execute("DELETE FROM PERSON;")

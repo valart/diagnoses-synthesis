@@ -20,13 +20,16 @@ class Trajectory:
     @:param start_edge: diagnosis ICD-10 code
     @:param end_edge: trajectories state object
     '''
-
     def add_edge(self, start_edge, end_edge):
         if start_edge not in self.graph:
             self.graph[start_edge] = [end_edge]
         else:
             self.graph[start_edge].append(end_edge)
 
+    '''
+    @:param person: person object
+    @:param code: trajectory initial state
+    '''
     def insert_trajectory(self, person, code):
         random_date = self.get_random_date(person.birthday, person.today)
         self.insert_diagnosis(code, random_date, person.section)
@@ -66,9 +69,8 @@ class Trajectory:
             date = datetime.datetime.strptime(diagnosis[1], '%Y-%m-%d').date()
             if time < date:
                 diagnoses_list.insert(index, (name.split('_')[0], str(time), 'TRJ'))
-                return True
+                break
             index += 1
-        return False
 
     def get_random_date(self, start_date, end_date):
         time_between_dates = end_date - start_date
