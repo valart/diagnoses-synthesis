@@ -3,6 +3,7 @@ import csv
 from datetime import datetime
 import ast
 
+DATA_FILE = 'db.sqlite'
 
 def get_icd10_to_omop(filename):
     code = dict()
@@ -15,7 +16,6 @@ def get_icd10_to_omop(filename):
 
 
 def insert_conceptions(conn, filename):
-    conn.execute("DELETE FROM CONCEPT;")
     with open(filename) as file:
         row = csv.reader(file, delimiter="\t")
         next(row)  # Skipping first line
@@ -60,11 +60,9 @@ codes = get_icd10_to_omop('../data/ICD10/icd10_to_omop.tsv')  # Path to the file
 try:
     print("Trying to connect ...")
 
-    connection = sqlite3.connect('db.sqlite')
+    connection = sqlite3.connect(DATA_FILE)
 
     print("Connected")
-
-    insert_conceptions(connection, "../data/ICD10/concept.tsv")
 
     person_id = 0  # int(connection.execute("SELECT MAX(person_id) FROM PERSON;").fetchone()[0])
     condition_occurrence_id = 0  # int(connection.execute("SELECT MAX(condition_occurrence_id) FROM CONDITION_OCCURRENCE;").fetchone()[0])
@@ -77,6 +75,39 @@ try:
     connection.execute("DELETE FROM CONDITION_OCCURRENCE;")
     connection.execute("DELETE FROM PROCEDURE_OCCURRENCE;")
     connection.execute("DELETE FROM OBSERVATION;")
+
+    connection.execute("DELETE FROM DRUG_EXPOSURE;")
+    connection.execute("DELETE FROM DRUG_ERA;")
+    connection.execute("DELETE FROM COST;")
+    connection.execute("DELETE FROM MEASUREMENT;")
+    connection.execute("DELETE FROM VISIT_DETAIL;")
+    connection.execute("DELETE FROM PAYER_PLAN_PERIOD;")
+    connection.execute("DELETE FROM VISIT_OCCURRENCE;")
+    connection.execute("DELETE FROM DEVICE_EXPOSURE;")
+    connection.execute("DELETE FROM SPECIMEN;")
+    connection.execute("DELETE FROM NOTE_NLP;")
+    connection.execute("DELETE FROM NOTE;")
+    connection.execute("DELETE FROM PROVIDER;")
+    connection.execute("DELETE FROM DRUG_STRENGTH;")
+    connection.execute("DELETE FROM CONCEPT;")
+    connection.execute("DELETE FROM SOURCE_TO_CONCEPT_MAP;")
+    connection.execute("DELETE FROM LOCATION;")
+    connection.execute("DELETE FROM METADATA;")
+    connection.execute("DELETE FROM DEATH;")
+    connection.execute("DELETE FROM COHORT_ATTRIBUTE;")
+    connection.execute("DELETE FROM DOSE_ERA;")
+    connection.execute("DELETE FROM CARE_SITE;")
+    connection.execute("DELETE FROM CONDITION_ERA;")
+    connection.execute("DELETE FROM FACT_RELATIONSHIP;")
+    connection.execute("DELETE FROM CONCEPT_ANCESTOR;")
+    connection.execute("DELETE FROM COHORT;")
+    connection.execute("DELETE FROM CONCEPT_CLASS;")
+    connection.execute("DELETE FROM CDM_SOURCE;")
+    connection.execute("DELETE FROM CONCEPT_SYNONYM;")
+    connection.execute("DELETE FROM RELATIONSHIP;")
+    connection.execute("DELETE FROM CONCEPT_RELATIONSHIP;")
+
+    insert_conceptions(connection, "../data/ICD10/concept.tsv")
 
     print("Inserting data to database")
 

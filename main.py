@@ -30,10 +30,10 @@ def insert_trajectory(trajectories, data):
     indexes = [i for i in range(len(data))]
     random.shuffle(indexes)
     # Getting random number of people
-    indexes = indexes[:int(random.randint(1, 100) / 100 * len(data))]
-    for index in indexes:
-        # Getting random number of trajectories
-        for key in random.sample(keys, random.randint(1, len(keys))):
+    indexes = indexes[:int(random.randint(10, 100) / 100 * len(data))]
+    for key in keys:
+        random.shuffle(indexes)
+        for index in indexes[:int(len(indexes) * trajectories[key].percent_of_patients)]:
             trajectories[key].insert_trajectory(data[index], key)
 
 
@@ -50,7 +50,7 @@ def generate(population=1000):
     first_time = True
     for i in range(population):
 
-        start_date = date(1920, 1, 1)
+        start_date = date(1970, 1, 1)
         end_date = date(2020, 1, 1)
 
         time_between_dates = end_date - start_date

@@ -1,0 +1,6 @@
+code: A00
+percent: 0.8
+transaction:
+  B00:
+    probability: 1
+    period: 12

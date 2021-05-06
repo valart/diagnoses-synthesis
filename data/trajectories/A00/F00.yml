@@ -1,0 +1,8 @@
+code: F00
+transaction:
+  M00:
+    probability: 0.3
+    period: 12
+  None:
+    probability: 0.7
+    period: 0

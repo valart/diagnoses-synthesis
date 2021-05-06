@@ -1,4 +1,5 @@
 code: I10
+percent: 0.5
 transaction:
   A09:
     probability: 1

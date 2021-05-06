@@ -91,5 +91,7 @@ def get_trajectories():
                 for code, value in data['transaction'].items():
                     end_edge = TrajectoryState(code, value['period'], value['probability'])
                     trajectory.add_edge(start_edge, end_edge)
+                if data['code'] == directory:
+                    trajectory.set_percent_of_patients(data['percent'])
         trajectories[directory] = trajectory
     return trajectories

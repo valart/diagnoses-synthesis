@@ -1,0 +1,8 @@
+code: C00
+transaction:
+  D00:
+    probability: 0.2
+    period: 12
+  F00:
+    probability: 0.8
+    period: 12

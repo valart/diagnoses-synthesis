@@ -7,11 +7,20 @@ class Trajectory:
 
     def __init__(self):
         self.graph = dict()
+        self.percent_of_patients = 0
 
     '''
     @:param start_edge: diagnosis ICD-10 code
     @:param end_edge: trajectories state object
     '''
+    def set_percent_of_patients(self, percent_of_patients):
+        self.percent_of_patients = percent_of_patients
+
+    '''
+    @:param start_edge: diagnosis ICD-10 code
+    @:param end_edge: trajectories state object
+    '''
+
     def add_edge(self, start_edge, end_edge):
         if start_edge not in self.graph:
             self.graph[start_edge] = [end_edge]
@@ -19,11 +28,9 @@ class Trajectory:
             self.graph[start_edge].append(end_edge)
 
     def insert_trajectory(self, person, code):
-        for index, section in enumerate(person.section):
-            if section[0] in code:
-                self.get_trajectory(section[0], datetime.datetime.strptime(section[1], '%Y-%m-%d').date(), person.section, person.today)
-                person.section[index] = (section[0], section[1], "TRJ")
-                break
+        random_date = self.get_random_date(person.birthday, person.today)
+        self.insert_diagnosis(code, random_date, person.section)
+        self.get_trajectory(code, random_date, person.section, person.today)
 
     '''
     @:param diagnosis: current diagnosis code
@@ -31,6 +38,7 @@ class Trajectory:
     @:param diagnoses_list: list of diagnosis that may appear
     @:param deathdate: date, when person died
     '''
+
     def get_trajectory(self, diagnosis, time, diagnoses_list, deathdate):
         if diagnosis in self.graph:
             # Get all child and shuffle them
@@ -42,7 +50,7 @@ class Trajectory:
             power = random.random()
             for state in child:
                 if power <= state.probability + previous:
-                    if state.name == 'None':
+                    if state.name == 'None' or time == deathdate:
                         return
                     date = time + relativedelta(months=state.period)
                     date = date if date < deathdate else deathdate
@@ -57,7 +65,7 @@ class Trajectory:
         for diagnosis in diagnoses_list:
             date = datetime.datetime.strptime(diagnosis[1], '%Y-%m-%d').date()
             if time < date:
-                diagnoses_list.insert(index, (name, str(time), 'TRJ'))
+                diagnoses_list.insert(index, (name.split('_')[0], str(time), 'TRJ'))
                 return True
             index += 1
         return False

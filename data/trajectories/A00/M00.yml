@@ -1,0 +1,5 @@
+code: M00
+transaction:
+  H00:
+    probability: 1
+    period: 12

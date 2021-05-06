@@ -1,0 +1,11 @@
+code: D00_2
+transaction:
+  G00:
+    probability: 0.1
+    period: 12
+  H00:
+    probability: 0.8
+    period: 12
+  I00:
+    probability: 0.1
+    period: 12
