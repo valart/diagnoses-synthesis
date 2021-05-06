@@ -17,15 +17,24 @@ vastavad [RHK-10][1] kategooriatele. Iga kood on eraldiseisev objekt, millel on 
 
 *next* - võimalikud üleminekud antud olekust (lõppolekust) koos tõenäosusega
 
-Samuti on olemas kaust *data/trajectories*, mis vastab trajektooride lisamise eest. Igale trajektoorile vastab kindel diagnoosi kood, millest ta algab. Trajektoori lisamiseks antud kausta sees peab looma kausta algdiaagnoosi nimelise koodiga ning lisama sinna eraldiseisvaid objekte, millel on järgmised väljad:
+näiteks 
+```
+next: 
+  A00: 0.5
+  INITIAL: 0.5
+```
+
+<br/>
+Samuti on olemas kaust *data/trajectories*, mis vastab trajektooride lisamise eest. Igale trajektoorile vastab kindel diagnoosi kood, millest ta algab. Trajektoori lisamiseks antud kausta sees peab looma kausta algdiagnoosi nimelise koodiga ning lisama sinna eraldiseisvaid objekte, millel on järgmised väljad:
 
 *code* - diagnoosile vastav kood
 
+*percent* - protsent vahemikus 0-1, mis näitb, kui suur osa inimestest saab antud signaali (antud väli on ainult algolekul)
+
 *transaction* - massiiv objektidest millel on
-    
-    *probability* - tulevase diagnoosi tekkimis tõenäosus
-    
-    *period* - kuuline ajavahemik, mille jooksul andtud diagnoos saab tekkida
+
+  * probability - tulevase diagnoosi tekkimis tõenäosus
+  * period - kuuline ajavahemik, mille jooksul andtud diagnoos saab tekkida
 
 [1]: https://rhk.sm.ee/
 
@@ -40,6 +49,8 @@ Põhikäsud on `python main.py [-p populatsiooni arv] [-plot RHK-10 peatükki ko
 2. `python main.py -plot chapter` genereerib graafiku, mille peal on näha kõikide daignooside peatükkide jaotust
 
 3. `python main.py -model 5 F` genereerib *HTML* koodi, mille peal on näha kogu tõenäosusliku automaadi, mis vastab naissoole vanuses 5
+
+Andmebaasi andmete lisamiseks peab käivitama *database/connection.py* faili.
 
 ## Autor
 	Artjom Valdas, Tartu Ülikool
