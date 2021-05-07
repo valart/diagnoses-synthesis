@@ -60,7 +60,7 @@ def create_observation(conn, observation):
 try:
     codes = get_icd10_to_omop('../data/ICD10/icd10_to_omop.tsv')  # Path to the file icd10_to_omop.tsv file
 except:
-    print("Andmebaasi lisamiseks vajalik fail 'icd10_to_omop.tsv' puudub. Võtke ühendust autoriga")
+    print("The file 'data/ICD10/icd10_to_omop.tsv' required to add data to the database is missing. Contact the author")
     sys.exit(1)
 
 try:
@@ -186,4 +186,4 @@ try:
     connection.close()
 
 except:
-    print('Connection refused! Check diagnoses.csv and db.sqlite files existence')
+    print('Connection refused! Check diagnoses.csv, db.sqlite and concept.tsv files existence')
