@@ -4,6 +4,8 @@ Antud programm on loodud Tartu Ülikooli lõputöö raames teemal **Sünteetilis
 Eesmärgiks on luua võimalikult lähedased reaalsusele andmed. Progamm on realiseeritud tõenäosusliku
 automaadi abil ning kõik sündmused ja üleminekud omavad tõenäosust, mida kasutaja saab iseseisvalt muuta.
 
+### Projekti kirjeldus
+
 Projektis *data/input* kausta sees on olemas neli põhikausta: *chapter, subchapter, section, subsection*, mis
 vastavad [RHK-10][1] kategooriatele. Iga kood on eraldiseisev objekt, millel on järgmised väljad:
 
