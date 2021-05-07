@@ -29,7 +29,7 @@ next:
 <br/>
 Samuti on olemas kaust *data/trajectories*, mis vastab trajektooride lisamise eest. Igale trajektoorile vastab kindel diagnoosi kood, millest ta algab. Trajektoori lisamiseks antud kausta sees peab looma kausta algdiagnoosi nimelise koodiga ning lisama sinna eraldiseisvaid objekte, millel on järgmised väljad:
 
-***code*** - diagnoosile vastav kood. Juhul kui trajektooris esineb üks ja sama kood, kuid nad viidavad erinevalt, siis koodi ja selle faili (laiendiga *.yml*) peaks nimetama *code_X*, kus X vastab numbrile. Iga järgnev number peb olema suurem eelmisest (näiteks *I10_1*, *I10_2* jne)
+***code*** - diagnoosile vastav kood. Juhul kui trajektooris esinevad samasugused olekud, kuid nad viidavad erinevatele diagnoosidele, siis koodi ja selle faili (laiendiga .yml) peaks nimetama code_X, kus X vastab numbrile. Iga järgnev number peab olema suurem eelmisest (näiteks I10_1, I10_2 jne).
 
 ***percent*** - protsent vahemikus 0-1, mis näitb, kui suur osa inimestest saab antud signaali (antud väli on ainult algolekul)
 
