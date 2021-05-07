@@ -1,0 +1,12 @@
+code: G43
+percent: 0.7
+transaction:
+  E55:
+    probability: 0.2
+    period: 22
+  E78:
+    probability: 0.5
+    period: 18
+  F32:
+    probability: 0.3
+    period: 17

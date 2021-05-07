@@ -18,7 +18,7 @@ def save_into_file(data, first_time):
             writer.writerow(
                 ["Code", "Sex", "Birthday", "Died", "Age", "Chapter", "Subchapter", "Section", "Subsection"])
         for person in data:
-            # Filtering dat between 2010 and 2019
+            # Filtering data between 2010 and 2019
             # person.section = list(filter(lambda x: 2010 <= int(x[1][:4]) <= 2019, person.section))
             writer.writerow(
                 [person.code, person.sex, person.birthday, person.today, person.today.year - person.birthday.year,

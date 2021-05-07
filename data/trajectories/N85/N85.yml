@@ -1,0 +1,6 @@
+code: N85
+percent: 0.2
+transaction:
+  C60:
+    probability: 1
+    period: 7

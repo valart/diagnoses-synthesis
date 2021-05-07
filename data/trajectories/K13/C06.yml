@@ -1,0 +1,14 @@
+code: C06
+transaction:
+  C04:
+    probability: 0.1
+    period: 5
+  E64:
+    probability: 0.2
+    period: 6
+  J18:
+    probability: 0.3
+    period: 20
+  K12:
+    probability: 0.4
+    period: 7

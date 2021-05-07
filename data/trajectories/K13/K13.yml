@@ -1,0 +1,9 @@
+code: K13
+percent: 0.75
+transaction:
+  C06:
+    probability: 0.8
+    period: 11
+  E64:
+    probability: 0.2
+    period: 17

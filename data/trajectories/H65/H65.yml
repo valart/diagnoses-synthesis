@@ -1,0 +1,12 @@
+code: H65
+percent: 0.5
+transaction:
+  D80:
+    probability: 0.1
+    period: 20
+  D84:
+    probability: 0.5
+    period: 20
+  G47:
+    probability: 0.4
+    period: 20

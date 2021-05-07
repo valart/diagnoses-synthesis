@@ -1,0 +1,11 @@
+code: E78
+transaction:
+  D68:
+    probability: 0.3
+    period: 14
+  G47:
+    probability: 0.4
+    period: 45
+  I50:
+    probability: 0.3
+    period: 40
