@@ -53,7 +53,9 @@ Põhikäsud on `python main.py [-p populatsiooni arv] [-plot RHK-10 peatükki ko
 
 3. `python main.py -model 5 F` genereerib *HTML* koodi, mille peal on näha kogu tõenäosusliku automaadi, mis vastab naissoole vanuses 5
 
-Andmebaasi andmete lisamiseks peab käivitama *database/connection.py* faili.
+### Andmebaas
+
+Andmebaasi andmete lisamiseks peab käivitama *database/connection.py* faili. Selleks, et scirpt käivituks kaustas *data/ICD10* peavad olema failid *icd10_to_omop.tsv* ja *concept.tsv*. Nende saamiseks võtke ühendust autoriga.
 
 ## Autor
 	Artjom Valdas, Tartu Ülikool
