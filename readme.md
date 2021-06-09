@@ -57,5 +57,35 @@ Põhikäsud on `python main.py [-p populatsiooni arv] [-plot RHK-10 peatükki ko
 
 Andmebaasi andmete lisamiseks peab käivitama *database/connection.py* faili. Selleks, et scirpt käivituks kaustas *data/ICD10* peavad olema failid *icd10_to_omop.tsv* ja *concept.tsv*. Nende saamiseks võtke ühendust autoriga.
 
+### Trajektooride lisamine
+
+1. Kaustas *trajectories* looge kaust RHK10 koodi nimega, millest algab trajektoor (näiteks *A00*)
+2. Selles kaustas looge fail *.yml* nimega, millest trajektoor algab (näiteks *A00.yml*)
+3. Esimese faili sisu näeb välja järgmiselt (näide)
+```
+code: A00
+percent: 0.8
+transaction:
+  B00:
+    probability: 1
+    period: 12
+```
+kus *code* antud oleku RHK10 kood, *percent* kui suurel osal protsentuaalselt antud trajektoor hakkab esinema, *transaction* võimalikud üleminekud, mis omavad võimaliku oleku RHK10 koodi, tõenäosust (kõikide olekute summa peab olema 1) ning ajavahemikku, mille jooksul antud haigus saab tekkida
+
+4. Selleks et luua olek, millese tahame edasi liikuda peab looma faili antud RHK10 koodiga (näiteks B00), mille sisu saab olla järgmine
+```
+code: B00
+transaction:
+  C00:
+    probability: 0.7
+    period: 12
+  D00:
+    probability: 0.2
+    period: 12
+  E00:
+    probability: 0.1
+    period: 12
+```
+
 ## Autor
 	Artjom Valdas, Tartu Ülikool
