@@ -46,7 +46,7 @@ Kõikide käskude käivitamiseks peate olema ***diagnoses*** kaustas
 
 Põhikäsud on `python main.py [-p populatsiooni arv] [-plot RHK-10 peatükki kood või sõna chapter] [-model vanus sugu(M,F)]`. Kõik käsud jooksutatakse eraldi
 
-1. `python main.py -p 1000` genereerib 1000 isikut projekti sees olevasse ***output*** kausta
+1. `python main.py -p 1000` genereerib 1000 isikut projekti sees olevasse ***output*** kausta faili *diagnoses.csv*. Iga diagnoosi on kujul ***(diagnoosi_kood, tekkimise_kuupäev)***, kuid leidub ka kujul ***(diagnoosi_kood, tekkimise_kuupäev, TRJ)***, mis näitab, et antud diagnoos oli lisatud trajektoori generaatori abil
 
 2. `python main.py -plot chapter` genereerib graafiku, mille peal on näha kõikide daignooside peatükkide jaotust. `python main.py -plot A00-B99` genereerib teatavaid nakkus- ja parasiithaigusi![Figure_1](https://user-images.githubusercontent.com/22376543/117357207-513df900-aebd-11eb-88eb-7bb40a6d38bd.png)
 
